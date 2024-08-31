@@ -1,31 +1,113 @@
-<div class="welcome-container">
-  <h1>Welcome to Our Site</h1>
-  
-  {{#if currentUser}}
-    <p>Hello, {{currentUser.name}}! We're glad to see you again.</p>
-    <div class="user-actions">
-      <a href="/u/{{currentUser.username}}" class="btn btn-primary">View Profile</a>
-      <a href="/session/{{currentUser.username}}/destroy" class="btn btn-outline-secondary">Logout</a>
+<div class="dashboard-container">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="logo">
+      <img src="path_to_logo.png" alt="Auroville Community">
     </div>
-  {{else}}
-    <p>Welcome, guest! Please sign in or create an account to access all features.</p>
-    <div class="guest-actions">
-      <a href="/login" class="btn btn-primary">Login</a>
-      <a href="/signup" class="btn btn-success">Sign Up</a>
+    <nav>
+      <ul>
+        <li class="active"><%= link_to "Dashboard", dashboard_path %></li>
+        <li><%= link_to "Homepage", homepage_path %></li>
+        <li>
+          <%= link_to announcements_path do %>
+            Announcements
+            <span class="hot-badge">Hot</span>
+          <% end %>
+        </li>
+        <!-- Add other menu items -->
+      </ul>
+    </nav>
+    <div class="others-section">
+      <h3>OTHERS</h3>
+      <ul>
+        <li><%= link_to "References", references_path %></li>
+        <li><%= link_to "Help Center", help_center_path %></li>
+        <li><%= link_to "Miscellaneous", miscellaneous_path %></li>
+        <li><%= link_to "Log out", logout_path %></li>
+      </ul>
     </div>
-  {{/if}}
+  </aside>
 
-  <section class="features">
-    <h2>Our Features</h2>
-    <ul>
-      <li>Easy-to-use interface</li>
-      <li>Powerful analytics</li>
-      <li>24/7 customer support</li>
-    </ul>
-  </section>
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Header -->
+    <header>
+      <div class="search-bar">
+        <%= form_tag(search_path, method: :get) do %>
+          <%= text_field_tag :query, nil, placeholder: "Search everything..." %>
+        <% end %>
+      </div>
+      <div class="user-menu">
+        <!-- Add user menu items -->
+      </div>
+    </header>
 
-  <section class="about">
-    <h2>About Us</h2>
-    <p>We are dedicated to providing the best service to our users. Our team works tirelessly to ensure your experience is smooth and enjoyable.</p>
-  </section>
+    <h1>Dashboard</h1>
+
+    <!-- Welcome Banner -->
+    <div class="welcome-banner">
+      <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
+      <%= link_to "Learn more", learn_more_path, class: "btn-learn-more" %>
+    </div>
+
+    <!-- Dashboard Grid -->
+    <div class="dashboard-grid">
+      <!-- Latest Announcements -->
+      <section class="announcements">
+        <h2>Latest Announcements</h2>
+        <% @announcements.each do |announcement| %>
+          <div class="announcement-item">
+            <%= image_tag announcement.image, alt: announcement.title %>
+            <div>
+              <h3><%= announcement.title %></h3>
+              <p><%= announcement.date.strftime("%d %B %Y") %></p>
+            </div>
+          </div>
+        <% end %>
+      </section>
+
+      <!-- Quote Section -->
+      <section class="quote">
+        <h2>66</h2>
+        <p>All's miracle and can by miracle change.</p>
+        <p class="quote-source">BOOK I, CANTO II</p>
+      </section>
+
+      <!-- Video Summary -->
+      <section class="video-summary">
+        <h2>Video Summary</h2>
+        <!-- Add video embed code here -->
+      </section>
+
+      <!-- Who's Online -->
+      <section class="whos-online">
+        <h2>Who's Online</h2>
+        <!-- Add online users here -->
+      </section>
+
+      <!-- Recent Topics -->
+      <section class="recent-topics">
+        <h2>Recent Topics</h2>
+        <% @recent_topics.each do |topic| %>
+          <div class="topic-item">
+            <%= image_tag topic.user.avatar, alt: topic.user.name %>
+            <div>
+              <h3><%= topic.title %></h3>
+              <p>by <%= topic.user.name %></p>
+            </div>
+          </div>
+        <% end %>
+      </section>
+
+      <!-- Forum Statistics -->
+      <section class="forum-statistics">
+        <h2>Forum Statistics</h2>
+        <div class="stat-item">
+          <span class="stat-number"><%= @registered_users_count %></span>
+          <span class="stat-label">REGISTERED USERS</span>
+        </div>
+        <!-- Add more statistics as needed -->
+      </section>
+    </div>
+  </main>
 </div>
