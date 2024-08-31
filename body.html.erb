@@ -1,0 +1,35 @@
+<body>
+  <div class="welcome-container">
+    <h1>Welcome to Our Site</h1>
+    
+    <% if current_user %>
+      <p>Hello, <%= current_user.name %>! We're glad to see you again.</p>
+      <div class="user-actions">
+        <%= link_to 'View Profile', user_path(current_user), class: 'btn btn-primary' %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary' %>
+      </div>
+    <% else %>
+      <p>Welcome, guest! Please sign in or create an account to access all features.</p>
+      <div class="guest-actions">
+        <%= link_to 'Login', new_user_session_path, class: 'btn btn-primary' %>
+        <%= link_to 'Sign Up', new_user_registration_path, class: 'btn btn-success' %>
+      </div>
+    <% end %>
+
+    <section class="features">
+      <h2>Our Features</h2>
+      <ul>
+        <li>Easy-to-use interface</li>
+        <li>Powerful analytics</li>
+        <li>24/7 customer support</li>
+      </ul>
+    </section>
+
+    <section class="about">
+      <h2>About Us</h2>
+      <p>We are dedicated to providing the best service to our users. Our team works tirelessly to ensure your experience is smooth and enjoyable.</p>
+    </section>
+  </div>
+
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</body>
