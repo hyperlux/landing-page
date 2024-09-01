@@ -47,6 +47,47 @@
             --hover: var(--dark-hover);
         }
 
+        /* New font size rules */
+        body,
+        p,
+        h1, h2, h3, h4, h5, h6,
+        div,
+        span,
+        a,
+        button,
+        input,
+        select,
+        textarea {
+            font-size: 18px;
+        }
+
+        /* Adjust heading sizes proportionally */
+        h1 { font-size: 2em; }
+        h2 { font-size: 1.5em; }
+        h3 { font-size: 1.17em; }
+        h4 { font-size: 1em; }
+        h5 { font-size: 0.83em; }
+        h6 { font-size: 0.67em; }
+
+        /* Keep the large quote text size */
+        .quote h2 { 
+            font-size: 4em; 
+        }
+
+        /* Adjust other specific sizes that should remain different */
+        .announcement-item p, 
+        .topic-item p {
+            font-size: 16px; /* slightly smaller for these elements */
+        }
+
+        .forum-statistics .stat-number {
+            font-size: 3em;
+        }
+
+        .forum-statistics .stat-label {
+            font-size: 0.8em;
+        }
+
         .dashboard-container {
             display: flex;
             max-width: 1200px;
@@ -107,7 +148,6 @@
             flex-direction: column;
             justify-content: center;
         }
-        .quote h2 { font-size: 4em; margin: 0; }
         .video-summary { grid-column: 2 / 3; grid-row: 3 / 4; }
         .whos-online { grid-column: 1 / 2; grid-row: 4 / 5; }
         .recent-topics { grid-column: 3 / 4; grid-row: 2 / 4; }
@@ -135,24 +175,10 @@
 
         .announcement-item h3, .topic-item h3 {
             margin: 0;
-            font-size: 16px;
         }
 
         .announcement-item p, .topic-item p {
             margin: 5px 0 0;
-            font-size: 14px;
-            color: var(--text);
-            opacity: 0.7;
-        }
-
-        .forum-statistics .stat-number {
-            font-size: 3em;
-            color: var(--primary);
-        }
-
-        .forum-statistics .stat-label {
-            text-transform: uppercase;
-            font-size: 0.8em;
             color: var(--text);
             opacity: 0.7;
         }
@@ -236,7 +262,7 @@
                 <section class="video-summary section-box">
                     <h2>Featured Video</h2>
                     <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/watch?v=Kqz56TrKDRk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/Kqz56TrKDRk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                 </section>
 
@@ -247,6 +273,7 @@
 
                 <section class="recent-topics section-box">
                     <h2>Recent Topics</h2>
+                    <!-- Add dynamic content for recent topics here -->
                 </section>
 
                 <section class="forum-statistics section-box">
