@@ -5,13 +5,7 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
-  }
-
-  .sidebar {
-    width: 250px;
-    background-color: #2d3436;
-    color: white;
-    padding: 20px;
+    background-color: #f1ece6;
   }
 
   .main-content {
@@ -73,6 +67,9 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
   }
 
   .announcement-item img, .topic-item img, .whos-online img {
@@ -80,6 +77,21 @@
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
+  }
+
+  .announcement-item .content, .topic-item .content {
+    flex-grow: 1;
+  }
+
+  .announcement-item h3, .topic-item h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .announcement-item p, .topic-item p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #777;
   }
 
   .forum-statistics .stat-number {
@@ -110,10 +122,6 @@
 </style>
 
 <div class="dashboard-container">
-  <aside class="sidebar">
-    <!-- Sidebar content goes here -->
-  </aside>
-
   <main class="main-content">
     <h1>Dashboard</h1>
 
@@ -128,7 +136,7 @@
         {{#each announcements}}
           <div class="announcement-item">
             <img src="{{this.image}}" alt="{{this.title}}">
-            <div>
+            <div class="content">
               <h3>{{this.title}}</h3>
               <p>{{this.date}}</p>
             </div>
@@ -161,7 +169,7 @@
         {{#each recentTopics}}
           <div class="topic-item">
             <img src="{{this.user.avatar_template}}" alt="{{this.user.username}}">
-            <div>
+            <div class="content">
               <h3>{{this.title}}</h3>
               <p>by {{this.user.username}}</p>
             </div>
