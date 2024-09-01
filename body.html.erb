@@ -210,7 +210,7 @@
 
   function fetchAnnouncements() {
     // Replace 'announcements' and '5' with your actual category slug and ID
-    fetch('https://aurovillenetwork/c/announcements/5.json')
+    fetch('https://aurovillenetwork.org/c/announcements/5.json')
       .then(response => response.json())
       .then(data => {
         const announcementsContainer = document.querySelector('.latest-announcements');
