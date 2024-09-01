@@ -185,15 +185,35 @@
     <h1>Dashboard</h1>
 
     <div class="dashboard-grid">
-      <!-- Dashboard content (same as before) -->
-    </div>
-  </main>
-</div>
+      <div class="welcome-banner">
+        <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
+        <a href="/learn-more" class="btn-learn-more">Learn more</a>
+      </div>
 
-<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+      <section class="latest-announcements section-box">
+        <h2>Latest Announcements</h2>
+        {{#each announcements}}
+          <div class="announcement-item">
+            <img src="{{this.image}}" alt="{{this.title}}">
+            <div class="content">
+              <h3>{{this.title}}</h3>
+              <p>{{this.date}}</p>
+            </div>
+          </div>
+        {{/each}}
+      </section>
 
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle('dark-theme');
-  }
-</script>
+      <section class="quote">
+        <h2>66</h2>
+        <p>All's miracle and can by miracle change.</p>
+        <p class="quote-source">BOOK I, CANTO II</p>
+      </section>
+
+      <section class="video-summary section-box">
+        <h2>Video Summary</h2>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </section>
+
+      <section
