@@ -1,25 +1,10 @@
 <style>
-  :root {
-    --primary-color: #e17055;
-    --secondary-color: #b7410e;
-    --bg-color: #f1ece6;
-    --text-color: #2d3436;
-    --light-text: #ffffff;
-  }
-
-  body {
-    font-family: Arial, sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    margin: 0;
-    padding: 0;
-  }
-
   .dashboard-container {
     display: flex;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
+    font-family: Arial, sans-serif;
   }
 
   .sidebar {
@@ -43,8 +28,8 @@
 
   .welcome-banner {
     grid-column: 1 / 4;
-    background-color: var(--primary-color);
-    color: var(--light-text);
+    background-color: #e17055;
+    color: white;
     padding: 20px;
     border-radius: 5px;
     display: flex;
@@ -53,61 +38,36 @@
   }
 
   .btn-learn-more {
-    background-color: var(--secondary-color);
-    color: var(--light-text);
+    background-color: #b7410e;
+    color: white;
     padding: 10px 20px;
     text-decoration: none;
     border-radius: 5px;
-  }
-
-  .latest-announcements {
-    grid-column: 1 / 2;
-    grid-row: 2 / 4;
-  }
-
-  .quote {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    background-color: var(--secondary-color);
-    color: var(--light-text);
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 40px 20px;
-    border-radius: 5px;
-  }
-
-  .quote h2 {
-    font-size: 4em;
-    margin: 0;
-  }
-
-  .video-summary {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-  }
-
-  .whos-online {
-    grid-column: 1 / 2;
-    grid-row: 4 / 5;
-  }
-
-  .recent-topics {
-    grid-column: 3 / 4;
-    grid-row: 2 / 4;
-  }
-
-  .forum-statistics {
-    grid-column: 3 / 4;
-    grid-row: 4 / 5;
   }
 
   .section-box {
     background-color: white;
     border-radius: 5px;
     padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
+
+  .latest-announcements { grid-column: 1 / 2; grid-row: 2 / 4; }
+  .quote { 
+    grid-column: 2 / 3; 
+    grid-row: 2 / 3; 
+    background-color: #b7410e;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .quote h2 { font-size: 4em; margin: 0; }
+  .video-summary { grid-column: 2 / 3; grid-row: 3 / 4; }
+  .whos-online { grid-column: 1 / 2; grid-row: 4 / 5; }
+  .recent-topics { grid-column: 3 / 4; grid-row: 2 / 4; }
+  .forum-statistics { grid-column: 3 / 4; grid-row: 4 / 5; }
 
   .announcement-item, .topic-item {
     display: flex;
@@ -115,29 +75,37 @@
     margin-bottom: 10px;
   }
 
-  .announcement-item img, .topic-item img {
+  .announcement-item img, .topic-item img, .whos-online img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     margin-right: 10px;
   }
 
-  .whos-online img {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    margin-right: 5px;
-  }
-
   .forum-statistics .stat-number {
     font-size: 3em;
-    color: var(--primary-color);
+    color: #e17055;
   }
 
   .forum-statistics .stat-label {
     text-transform: uppercase;
     font-size: 0.8em;
     color: #777;
+  }
+
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 </style>
 
@@ -176,13 +144,15 @@
 
       <section class="video-summary section-box">
         <h2>Video Summary</h2>
-        <iframe width="100%" height="200" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </div>
       </section>
 
       <section class="whos-online section-box">
         <h2>Who's Online</h2>
         {{#each onlineUsers}}
-          <img src="{{avatar_template}}" alt="{{username}}">
+          <img src="{{avatar_template}}" alt="{{username}}" title="{{username}}">
         {{/each}}
       </section>
 
