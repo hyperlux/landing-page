@@ -1,12 +1,15 @@
-function toggleTheme() {
-  document.body.classList.toggle('dark-theme');
-}
-
 function fetchAnnouncements() {
   const announcementsContent = document.getElementById('announcements-content');
   announcementsContent.innerHTML = 'Loading announcements...';
 
-  fetch('https://aurovillenetwork.org/c/announcements/5.json')
+  const apiKey = 'f99db92a79c6c7a7da9ada3c4c81a1c89e260165d05a60c50d68c4daf509822d';
+
+  fetch('https://aurovillenetwork.org/c/announcements/5.json', {
+    headers: {
+      'Api-Key': apiKey,
+      'Api-Username': 'system' // You might need to replace 'system' with an actual username
+    }
+  })
     .then(response => {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -41,7 +44,3 @@ function fetchAnnouncements() {
       announcementsContent.innerHTML = `<p class="error-message">Error loading announcements: ${error.message}</p>`;
     });
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  fetchAnnouncements();
-});
