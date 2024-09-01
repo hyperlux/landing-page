@@ -1,208 +1,272 @@
-<style>
-  :root {
-    /* Light theme variables */
-    --light-bg: #f1ece6;
-    --light-text: #333333;
-    --light-card-bg: #ffffff;
-    --light-card-border: #e0e0e0;
-    --light-primary: #e17055;
-    --light-secondary: #b7410e;
-    --light-hover: #f5f5f5;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auroville Network Dashboard</title>
+    <style>
+        :root {
+            /* Light theme variables */
+            --light-bg: #f1ece6;
+            --light-text: #333333;
+            --light-card-bg: #ffffff;
+            --light-card-border: #e0e0e0;
+            --light-primary: #e17055;
+            --light-secondary: #b7410e;
+            --light-hover: #f5f5f5;
 
-    /* Dark theme variables */
-    --dark-bg: #2c3e50;
-    --dark-text: #ecf0f1;
-    --dark-card-bg: #34495e;
-    --dark-card-border: #2c3e50;
-    --dark-primary: #e67e22;
-    --dark-secondary: #d35400;
-    --dark-hover: #3d566e;
-  }
+            /* Dark theme variables */
+            --dark-bg: #2c3e50;
+            --dark-text: #ecf0f1;
+            --dark-card-bg: #34495e;
+            --dark-card-border: #2c3e50;
+            --dark-primary: #e67e22;
+            --dark-secondary: #d35400;
+            --dark-hover: #3d566e;
+        }
 
-  /* Default to light theme */
-  body {
-    --bg: var(--light-bg);
-    --text: var(--light-text);
-    --card-bg: var(--light-card-bg);
-    --card-border: var(--light-card-border);
-    --primary: var(--light-primary);
-    --secondary: var(--light-secondary);
-    --hover: var(--light-hover);
-  }
+        /* Default to light theme */
+        body {
+            --bg: var(--light-bg);
+            --text: var(--light-text);
+            --card-bg: var(--light-card-bg);
+            --card-border: var(--light-card-border);
+            --primary: var(--light-primary);
+            --secondary: var(--light-secondary);
+            --hover: var(--light-hover);
+        }
 
-  /* Dark theme class */
-  body.dark-theme {
-    --bg: var(--dark-bg);
-    --text: var(--dark-text);
-    --card-bg: var(--dark-card-bg);
-    --card-border: var(--dark-card-border);
-    --primary: var(--dark-primary);
-    --secondary: var(--dark-secondary);
-    --hover: var(--dark-hover);
-  }
+        /* Dark theme class */
+        body.dark-theme {
+            --bg: var(--dark-bg);
+            --text: var(--dark-text);
+            --card-bg: var(--dark-card-bg);
+            --card-border: var(--dark-card-border);
+            --primary: var(--dark-primary);
+            --secondary: var(--dark-secondary);
+            --hover: var(--dark-hover);
+        }
 
-  .dashboard-container {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: var(--bg);
-    color: var(--text);
-  }
+        .dashboard-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+        }
 
-  .main-content {
-    flex-grow: 1;
-    padding: 20px;
-  }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
 
-  .dashboard-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto auto auto;
-    gap: 20px;
-  }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: auto auto auto;
+            gap: 20px;
+        }
 
-  .welcome-banner {
-    grid-column: 1 / 4;
-    background-color: var(--primary);
-    color: white;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+        .welcome-banner {
+            grid-column: 1 / 4;
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  .btn-learn-more {
-    background-color: var(--secondary);
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-  }
+        .btn-learn-more {
+            background-color: var(--secondary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
 
-  .section-box {
-    background-color: var(--card-bg);
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    border: 1px solid var(--card-border);
-  }
+        .section-box {
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid var(--card-border);
+        }
 
-  .latest-announcements { grid-column: 1 / 2; grid-row: 2 / 4; }
-  .quote { 
-    grid-column: 2 / 3; 
-    grid-row: 2 / 3; 
-    background-color: var(--secondary);
-    color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .quote h2 { font-size: 4em; margin: 0; }
-  .video-summary { grid-column: 2 / 3; grid-row: 3 / 4; }
-  .whos-online { grid-column: 1 / 2; grid-row: 4 / 5; }
-  .recent-topics { grid-column: 3 / 4; grid-row: 2 / 4; }
-  .forum-statistics { grid-column: 3 / 4; grid-row: 4 / 5; }
+        .latest-announcements { grid-column: 1 / 2; grid-row: 2 / 4; }
+        .quote { 
+            grid-column: 2 / 3; 
+            grid-row: 2 / 3; 
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .quote h2 { font-size: 4em; margin: 0; }
+        .video-summary { grid-column: 2 / 3; grid-row: 3 / 4; }
+        .whos-online { grid-column: 1 / 2; grid-row: 4 / 5; }
+        .recent-topics { grid-column: 3 / 4; grid-row: 2 / 4; }
+        .forum-statistics { grid-column: 3 / 4; grid-row: 4 / 5; }
 
-  .announcement-item, .topic-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: var(--hover);
-    border-radius: 5px;
-  }
+        .announcement-item, .topic-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: var(--hover);
+            border-radius: 5px;
+        }
 
-  .announcement-item img, .topic-item img, .whos-online img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
+        .announcement-item img, .topic-item img, .whos-online img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
 
-  .announcement-item .content, .topic-item .content {
-    flex-grow: 1;
-  }
+        .announcement-item .content, .topic-item .content {
+            flex-grow: 1;
+        }
 
-  .announcement-item h3, .topic-item h3 {
-    margin: 0;
-    font-size: 16px;
-  }
+        .announcement-item h3, .topic-item h3 {
+            margin: 0;
+            font-size: 16px;
+        }
 
-  .announcement-item p, .topic-item p {
-    margin: 5px 0 0;
-    font-size: 14px;
-    color: var(--text);
-    opacity: 0.7;
-  }
+        .announcement-item p, .topic-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: var(--text);
+            opacity: 0.7;
+        }
 
-  .forum-statistics .stat-number {
-    font-size: 3em;
-    color: var(--primary);
-  }
+        .forum-statistics .stat-number {
+            font-size: 3em;
+            color: var(--primary);
+        }
 
-  .forum-statistics .stat-label {
-    text-transform: uppercase;
-    font-size: 0.8em;
-    color: var(--text);
-    opacity: 0.7;
-  }
+        .forum-statistics .stat-label {
+            text-transform: uppercase;
+            font-size: 0.8em;
+            color: var(--text);
+            opacity: 0.7;
+        }
 
-  .video-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-  }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
 
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
 
-  /* Theme toggle button */
-  .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-</style>
+        /* Theme toggle button */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-<div class="dashboard-container">
-  <main class="main-content">
-    <h1>Dashboard</h1>
+        /* Additional styles for Discourse content */
+        .topic-item a {
+            color: var(--text);
+            text-decoration: none;
+        }
 
-    <div class="dashboard-grid">
-      <div class="welcome-banner">
-        <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
-        <a href="/learn-more" class="btn-learn-more">Learn more</a>
-      </div>
+        .topic-item a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <main class="main-content">
+            <h1>Dashboard</h1>
 
-      <section class="latest-announcements section-box">
-        <h2>Latest Announcements</h2>
-        <div id="announcements-content">
-          <!-- Announcements will be dynamically inserted here -->
-        </div>
-      </section>
+            <div class="dashboard-grid">
+                <div class="welcome-banner">
+                    <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
+                    <a href="/learn-more" class="btn-learn-more">Learn more</a>
+                </div>
 
-      <!-- ... (other sections remain the same) ... -->
+                <section class="latest-announcements section-box">
+                    <h2>Latest Announcements</h2>
+                    <div id="announcements-content">
+                        <!-- Announcements will be dynamically inserted here -->
+                    </div>
+                </section>
 
+                <section class="quote section-box">
+                    <h2>"</h2>
+                    <p>The future of the Earth depends on a change of consciousness.</p>
+                    <p>- The Mother</p>
+                </section>
+
+                <section class="video-summary section-box">
+                    <h2>Featured Video</h2>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/your-video-id" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                </section>
+
+                <section class="whos-online section-box">
+                    <h2>Who's Online</h2>
+                    <!-- Add dynamic content for online users here -->
+                </section>
+
+                <section class="recent-topics section-box">
+                    <h2>Recent Topics</h2>
+                    <% topic_list(list_opts: { category: 5, per_page: 5 }, opts: { instance_var: "auroville_topics" }) %>
+
+                    <% if @auroville_topics.present? %>
+                        <% @auroville_topics.each do |topic| %>
+                            <div class="topic-item">
+                                <img src="<%= topic.user.avatar_template.gsub('{size}', '40') %>" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="<%= topic.url %>" target="_blank"><%= emoji_codes_to_img(topic.fancy_title) %></a></h3>
+                                    <p><%= short_date(topic.created_at) %> • <%= topic.reply_count %> replies</p>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% else %>
+                        <p>No recent topics found.</p>
+                    <% end %>
+                </section>
+
+                <section class="forum-statistics section-box">
+                    <h2>Forum Statistics</h2>
+                    <!-- Add dynamic content for forum statistics here -->
+                </section>
+            </div>
+        </main>
     </div>
-  </main>
-</div>
 
-<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
 
-<script src="dashboard.js"></script>
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+        }
+
+        // Add any additional JavaScript for dynamic content here
+    </script>
+</body>
+</html>
