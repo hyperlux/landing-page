@@ -1,4 +1,37 @@
+
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Auroville Community | Dashboard</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+      <meta name="discourse_theme_id" content="15">
+    <meta name="theme-color" content="#111111">
+
+      <link rel="icon" type="image/png" href="https://aurovillenetwork.org/uploads/default/optimized/1X/e19c6cc451859e849a6ea8fe5bc4bcceeff054f7_2_32x32.png">
+      <link rel="apple-touch-icon" type="image/png" href="https://aurovillenetwork.org/uploads/default/optimized/1X/60223ad4a4359dc7738d8ac2dc94c8dd4b8f0599_2_180x180.jpeg">
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="-hEeUM_zB8lJ0EUXDsW_6uHdHoMvpXUPLbKcGcYyENi-KW6uJqschJr634N_ZLS4uo8hsom9PVKt9cne8f4X5Q" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer="defer"></script>
+    <link href="/stylesheets/landing_page_de71909ddcb254ada4cf9c84eb003289e171370a.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="landing_page"  />
+
+      <link href="/stylesheets/color_definitions_dark_1_15_0097ea02c4b7ebd277a9df5ed3d4ec1bd37bd916.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" class="light-scheme"/>
+      <link href="/stylesheets/desktop_theme_5_1c0b2cbd9c7a33d0c1bd10245eda47b8d47398b4.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="5" data-theme-name="clickable topic"/>
+<link href="/stylesheets/desktop_theme_13_cacbe7602e47622122c8737e9a5b67980912f773.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="13" data-theme-name="discotoc"/>
+<link href="/stylesheets/desktop_theme_2_42a3e8ad7956efc00d3ba8e7eab926f43066b3cb.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="2" data-theme-name="easy responsive footer"/>
+<link href="/stylesheets/desktop_theme_11_2d62c8b501a4dbb26075f12007cf66515c204e18.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="11" data-theme-name="header search"/>
+<link href="/stylesheets/desktop_theme_22_456341ec270ef5811e1fe6bf6a77a18e8005a7ff.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="22" data-theme-name="homepage feature"/>
+<link href="/stylesheets/desktop_theme_17_7dff5af568c6abf370746daca7cfbdef27283565.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="17" data-theme-name="inline pdf previews"/>
+<link href="/stylesheets/desktop_theme_20_7487b84c4a69135305034a24a2d3d1845cc763b3.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="20" data-theme-name="kanban board"/>
+<link href="/stylesheets/desktop_theme_15_e088de81c406d858c6c14f2fcae3c270b6fc5549.css?__ws=aurovillenetwork.org" media="all" rel="stylesheet" data-target="desktop_theme" data-theme-id="15" data-theme-name="fkb pro theme"/>
+      
+  </head>
+  <body class="landing-page dashboard">
+      
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -240,21 +273,42 @@
             <section class="latest-announcements section-box">
                 <h2>Latest Announcements</h2>
                 <div id="announcements-content">
-                    <% topic_list(list_opts: { category: 5, per_page: 5 }, opts: { instance_var: "auroville_topics" }) %>
 
-                    <% if @auroville_topics.present? %>
-                        <% @auroville_topics.each do |topic| %>
                             <div class="topic-item">
-                                <img src="<%= topic.user.avatar_template.gsub('{size}', '40') %>" alt="User Avatar">
+                                <img src="/user_avatar/aurovillenetwork.org/admin/40/112_2.png" alt="User Avatar">
                                 <div class="content">
-                                    <h3><a href="<%= topic.url %>" target="_blank"><%= emoji_codes_to_img(topic.fancy_title) %></a></h3>
-                                    <p><%= short_date(topic.created_at) %> • <%= topic.reply_count %> replies</p>
+                                    <h3><a href="https://aurovillenetwork.org/t/summary-february-to-may-2024-extracted-from-voice-of-auroville-issue-06/233" target="_blank">Summary – February to May 2024 Extracted from Voice of Auroville Issue 06</a></h3>
+                                    <p>August 25 • 0 replies</p>
                                 </div>
                             </div>
-                        <% end %>
-                    <% else %>
-                        <p>No recent topics found.</p>
-                    <% end %>
+                            <div class="topic-item">
+                                <img src="/user_avatar/aurovillenetwork.org/admin/40/112_2.png" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="https://aurovillenetwork.org/t/outcome-of-the-emergency-ra-decision-making-against-land-sales-exchanges-by-the-auroville-foundation-office-avfo/44" target="_blank">Outcome of the emergency RA decision-making against land sales/exchanges by the Auroville Foundation Office (AVFO)</a></h3>
+                                    <p>August 18 • 0 replies</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <img src="/user_avatar/aurovillenetwork.org/lucas/40/23_2.png" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="https://aurovillenetwork.org/t/auroville-residents-denounce-massive-land-exchange-scheme/230" target="_blank">Auroville Residents Denounce Massive Land Exchange Scheme</a></h3>
+                                    <p>August 25 • 0 replies</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <img src="/user_avatar/aurovillenetwork.org/lucas/40/23_2.png" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="https://aurovillenetwork.org/t/auroville-calls-for-independent-investigation-amidst-unfounded-allegations/229" target="_blank">Auroville Calls for Independent Investigation Amidst Unfounded Allegations</a></h3>
+                                    <p>August 25 • 0 replies</p>
+                                </div>
+                            </div>
+                            <div class="topic-item">
+                                <img src="/user_avatar/aurovillenetwork.org/lucas/40/23_2.png" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="https://aurovillenetwork.org/t/sante-services-in-august-2024/74" target="_blank">Santé services in august 2024</a></h3>
+                                    <p>August 22 • 0 replies</p>
+                                </div>
+                            </div>
                 </div>
             </section>
             <section class="quote section-box">
@@ -286,4 +340,10 @@
         // Add any JavaScript functionality here
     </script>
 </body>
+</html>
+
+      
+    <script src="/plugins/discourse-landing-pages/javascripts/common.js" defer="defer" type="application/javascript"></script>
+    <script src="/plugins/discourse-landing-pages/javascripts/desktop.js" defer="defer" type="application/javascript"></script>
+  </body>
 </html>
