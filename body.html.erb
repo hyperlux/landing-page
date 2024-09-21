@@ -43,83 +43,51 @@
             transform: translateX(-250px);
         }
 
-        .sidebar .logo {
-            text-align: center;
+        .sidebar-sections {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-section {
             margin-bottom: 20px;
         }
 
-        .sidebar .logo img {
-            max-width: 100%;
-            height: auto;
+        .sidebar-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            padding: 10px 0;
         }
 
-        .sidebar nav ul {
+        .sidebar-section-header-text {
+            font-weight: bold;
+        }
+
+        .sidebar-section-content {
             list-style-type: none;
             padding: 0;
+            margin: 0;
         }
 
-        .sidebar nav li {
-            margin-bottom: 15px;
-        }
-
-        .sidebar nav a {
+        .sidebar-section-link {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
             color: var(--sidebar-text);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            padding: 10px 0;
-            font-size: 18px;
         }
 
-        .sidebar nav a:hover {
-            color: var(--primary-color);
+        .sidebar-section-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        .sidebar nav i {
-            margin-right: 15px;
-            width: 24px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .topic-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding: 10px;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
-
-        .topic-item img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+        .sidebar-section-link-prefix {
             margin-right: 10px;
         }
 
-        .topic-item .content {
+        .sidebar-section-link-content-text {
             flex-grow: 1;
-        }
-
-        .topic-item h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .topic-item p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            color: #666;
-        }
-
-        .topic-item a {
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .topic-item a:hover {
-            color: var(--primary-color);
         }
 
         .hamburger-menu {
@@ -132,126 +100,4 @@
             z-index: 1000;
             background-color: var(--sidebar-bg);
             color: var(--sidebar-text);
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-            }
-
-            .sidebar {
-                transform: translateX(-250px);
-            }
-
-            .sidebar.visible {
-                transform: translateX(0);
-            }
-        }
-
-        .main-content {
-            margin-left: 300px;
-            padding: 20px;
-            width: calc(100% - 250px);
-        }
-
-        @media (max-width: 768px) {
-            .main-content {
-                margin-left: 0;
-                width: 100%;
-            }
-        }
-
-        /* ... (add any additional styles as needed) ... */
-    </style>
-</head>
-<body>
-    <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
-    <div class="sidebar">
-        <div class="logo">
-            <img src="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" alt="Auroville Community Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
-                <li><a href="#"><i class="icon-home"></i> Homepage</a></li>
-                <li><a href="#"><i class="icon-announcement"></i> Announcements</a></li>
-                <li><a href="https://aurovillenetwork.org/c/events/13"><i class="icon-event"></i> Events</a></li>
-                <li><a href="#"><i class="icon-forum"></i> Forums</a></li>
-                <li><a href="#"><i class="icon-social"></i> Social</a></li>
-                <li><a href="#"><i class="icon-directory"></i> Directory</a></li>
-                <li><a href="#"><i class="icon-references"></i> References</a></li>
-                <li><a href="#"><i class="icon-help"></i> Help Center</a></li>
-            </ul>
-        </nav>
-    </div>
-    <div class="main-content">
-        <div class="header">
-            <div class="search-bar">
-                <input type="text" placeholder="Search everything...">
-            </div>
-            <div class="user-menu">
-                <img src="path_to_user_avatar.jpg" alt="User Avatar">
-                <span>Anonymous Admin</span>
-            </div>
-        </div>
-        <div class="dashboard-grid">
-            <div class="welcome-banner">
-                <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
-                <a href="/learn-more" class="btn-learn-more">Learn more</a>
-            </div>
-            <section class="latest-announcements section-box">
-                <h2>Latest Announcements</h2>
-                <div id="announcements-content">
-                    <% topic_list(list_opts: { category: 5, per_page: 5 }, opts: { instance_var: "auroville_topics" }) %>
-
-                    <% if @auroville_topics.present? %>
-                        <% @auroville_topics.each do |topic| %>
-                            <div class="topic-item">
-                                <img src="<%= topic.user.avatar_template.gsub('{size}', '40') %>" alt="User Avatar">
-                                <div class="content">
-                                    <h3><a href="<%= topic.url %>" target="_blank"><%= emoji_codes_to_img(topic.fancy_title) %></a></h3>
-                                    <p><%= short_date(topic.created_at) %> • <%= topic.reply_count %> replies</p>
-                                </div>
-                            </div>
-                        <% end %>
-                    <% else %>
-                        <p>No recent announcements found.</p>
-                    <% end %>
-                </div>
-            </section>
-            <section class="quote section-box">
-                <h2>"All's miracle and can by miracle change."</h2>
-                <p>BOOK I, CANTO II</p>
-            </section>
-            <section class="featured-video section-box">
-                <h2>Featured Video</h2>
-                <div class="video-container">
-                    <iframe src="https://www.youtube.com/embed/Kqz56TrKDRk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-                </div>
-            </section>
-            <section class="whos-online section-box">
-                <h2>Who's Online</h2>
-                <!-- Add online users here -->
-            </section>
-            <section class="recent-topics section-box">
-                <h2>Recent Topics</h2>
-                <!-- Add recent topics here -->
-            </section>
-            <section class="forum-statistics section-box">
-                <h2>Forum Statistics</h2>
-                <!-- Add forum statistics here -->
-            </section>
-        </div>
-    </div>
-
-    <script>
-        // Add any JavaScript functionality here
-        function toggleSidebar() {
-            const sidebar = document.querySelector('.sidebar');
-            sidebar.classList.toggle('visible');
-        }
-    </script>
-</body>
-</html>
+            padding: 5
