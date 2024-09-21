@@ -36,6 +36,11 @@
             left: 0;
             top: 0;
             overflow-y: auto;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .sidebar.hidden {
+            transform: translateX(-250px);
         }
 
         .sidebar .logo {
@@ -117,10 +122,39 @@
             color: var(--primary-color);
         }
 
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1000;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            .sidebar {
+                transform: translateX(-250px);
+            }
+
+            .sidebar.visible {
+                transform: translateX(0);
+            }
+        }
+
         /* ... (add any additional styles as needed) ... */
     </style>
 </head>
 <body>
+    <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
     <div class="sidebar">
         <div class="logo">
             <img src="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" alt="Auroville Community Logo">
@@ -201,6 +235,10 @@
 
     <script>
         // Add any JavaScript functionality here
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('visible');
+        }
     </script>
 </body>
 </html>
