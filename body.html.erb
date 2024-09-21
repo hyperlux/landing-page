@@ -164,80 +164,9 @@
         }
 
         /* ... (add any additional styles as needed) ... */
-
-        /* Styles for the new header */
-        .d-header {
-            background-color: var(--sidebar-bg);
-            padding: 10px 0;
-        }
-
-        .d-header .wrap {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .d-header .contents {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .d-header .header-buttons {
-            display: flex;
-            align-items: center;
-        }
-
-        .d-header .logo-big img {
-            height: 40px;
-            width: auto;
-        }
-
-        .d-header .panel {
-            display: flex;
-            align-items: center;
-        }
-
-        .d-header .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .d-header .btn-primary:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .topic-list td {
-            padding: 2px 5px;
-        }
     </style>
 </head>
 <body>
-    <header class="d-header">
-        <div class="wrap">
-            <div class="contents">
-                <div class="header-buttons">
-                    <a href="/" class="logo-big">
-                        <img src="path_to_your_logo" alt="Auroville Community">
-                    </a>
-                </div>
-                <div class="panel clearfix">
-                    {{home-logo}}
-                    <div class="panel-body">
-                        {{#if currentUser}}
-                            {{user-menu}}
-                        {{else}}
-                            {{d-button action=(route-action "showLogin") class="btn-primary btn-small login-button" label="log_in"}}
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
     <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
     <div class="sidebar">
         <div class="logo">
@@ -258,6 +187,15 @@
         </nav>
     </div>
     <div class="main-content">
+        <div class="header">
+            <div class="search-bar">
+                <input type="text" placeholder="Search everything...">
+            </div>
+            <div class="user-menu">
+                <img src="path_to_user_avatar.jpg" alt="User Avatar">
+                <span>Anonymous Admin</span>
+            </div>
+        </div>
         <div class="dashboard-grid">
             <div class="welcome-banner">
                 <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
