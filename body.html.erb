@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -163,90 +163,77 @@
             }
         }
 
-        .header {
+        /* ... (add any additional styles as needed) ... */
+
+        /* Styles for the new header */
+        .d-header {
+            background-color: var(--sidebar-bg);
+            padding: 10px 0;
+        }
+
+        .d-header .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .d-header .contents {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: var(--card-bg);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        .header-sidebar-toggle {
+        .d-header .header-buttons {
             display: flex;
             align-items: center;
         }
 
-        .btn-sidebar-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: var(--text-color);
+        .d-header .logo-big img {
+            height: 40px;
+            width: auto;
         }
 
-        .home-logo-wrapper-outlet {
+        .d-header .panel {
             display: flex;
             align-items: center;
         }
 
-        .title img {
-            max-height: 40px;
-        }
-
-        .floating-search-input-wrapper {
-            flex-grow: 1;
-            margin: 0 20px;
-        }
-
-        .search-input {
-            position: relative;
-        }
-
-        .search-input input {
-            width: 100%;
-            padding: 10px 40px 10px 10px;
-            border: 1px solid var(--card-border);
-            border-radius: 5px;
-        }
-
-        .search-input .clear-search {
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-color);
-            text-decoration: none;
-        }
-
-        .d-header-icons {
-            display: flex;
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .d-header-icons li {
-            margin-left: 15px;
-        }
-
-        .d-header-icons .btn {
-            background: none;
+        .d-header .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
             border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
             cursor: pointer;
-            color: var(--text-color);
         }
 
-        .current-user img {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+        .d-header .btn-primary:hover {
+            background-color: var(--secondary-color);
         }
-
-        /* ... (add any additional styles as needed) ... */
     </style>
 </head>
 <body>
+    <header class="d-header">
+        <div class="wrap">
+            <div class="contents">
+                <div class="header-buttons">
+                    <a href="/" class="logo-big">
+                        <img src="path_to_your_logo" alt="Auroville Community">
+                    </a>
+                </div>
+                <div class="panel clearfix">
+                    {{home-logo}}
+                    <div class="panel-body">
+                        {{#if currentUser}}
+                            {{user-menu}}
+                        {{else}}
+                            {{d-button action=(route-action "showLogin") class="btn-primary btn-small login-button" label="log_in"}}
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
     <div class="hamburger-menu" onclick="toggleSidebar()">☰</div>
     <div class="sidebar">
         <div class="logo">
@@ -267,48 +254,6 @@
         </nav>
     </div>
     <div class="main-content">
-        <div class="header">
-            <div class="header-sidebar-toggle">
-                <button title="Sidebar" class="btn btn-flat btn-sidebar-toggle no-text btn-icon" aria-expanded="true" aria-controls="d-sidebar">
-                    <svg class="fa d-icon d-icon-bars svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#bars"></use></svg>
-                </button>
-            </div>
-            <div class="home-logo-wrapper-outlet">
-                <div class="title">
-                    <a href="/">
-                        <picture>
-                            <source srcset="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" media="(prefers-color-scheme: dark)">
-                            <img id="site-logo" class="logo-big" src="https://aurovillenetwork.org/uploads/default/original/1X/0d62d421d6367de3b68b8ba705742cb21d604daa.png" alt="Auroville Community">
-                        </picture>
-                    </a>
-                </div>
-            </div>
-            <div class="floating-search-input-wrapper">
-                <div class="search-input">
-                    <input id="search-term" autocomplete="off" placeholder="Search" aria-label="Search" type="search">
-                    <a class="clear-search" aria-label="clear_input" title="Clear search" href="">
-                        <svg class="fa d-icon d-icon-times svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#times"></use></svg>
-                    </a>
-                </div>
-            </div>
-            <ul class="d-header-icons">
-                <li class="header-dropdown-toggle chat-header-icon">
-                    <a href="/chat" class="btn no-text icon btn-flat" tabindex="0" title="Chat">
-                        <svg class="fa d-icon d-icon-d-chat svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#comment"></use></svg>
-                    </a>
-                </li>
-                <li>
-                    <button class="btn no-text btn-icon ai-bot-button icon btn-flat" title="Start a PM with an AI bot" type="button">
-                        <svg class="fa d-icon d-icon-robot svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#robot"></use></svg>
-                    </button>
-                </li>
-                <li id="current-user" class="header-dropdown-toggle current-user user-menu-panel">
-                    <button id="toggle-current-user" class="icon btn-flat" aria-haspopup="true" aria-label="Admin's account">
-                        <img loading="lazy" alt="" width="48" height="48" src="/user_avatar/aurovillenetwork.org/admin/96/112_2.png" class="avatar" title="profile, messages, bookmarks and preferences">
-                    </button>
-                </li>
-            </ul>
-        </div>
         <div class="dashboard-grid">
             <div class="welcome-banner">
                 <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
