@@ -1,15 +1,5 @@
 {
   "name": "Dashboard",
   "path": "dashboard",
-  "header": {
-    // href on anchor wrapping header logo
-    "root": "<url; default '/'>",
-    // notice to add to header
-    "notice": {
-      // href on anchor wrapping notice text
-      "href": "/join",
-      // notice text
-      "text": "We're looking for new members"
-    }
-  }
+  "theme": "FKB Pro Custom",
 }
