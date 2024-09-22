@@ -123,7 +123,7 @@
             margin-top: 0;
         }
 
-        .d-header-wrap {
+        .drop-down-mode.d-header-wrap {
             position: fixed;
             top: 0;
             left: 0;
@@ -170,114 +170,6 @@
         .d-header-icons .btn {
             background: none;
             border: none;
-            cursor: pointer;
-        }
-
-        .d-header-icons .btn svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--text-color);
-        }
-
-        .floating-search-input-wrapper {
-            flex-grow: 1;
-            margin: 0 20px;
-        }
-
-        .floating-search-input input {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            font-size: 14px;
-        }
-
-        @media (max-width: 768px) {
-            .d-header .wrap {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .floating-search-input-wrapper {
-                width: 100%;
-                margin: 10px 0;
-            }
-
-            .d-header-icons {
-                margin-top: 10px;
-            }
         }
     </style>
 </head>
-<body>
-    <div class="drop-down-mode d-header-wrap">
-        <header class="d-header">
-            <div class="wrap">
-                <div class="contents">
-                    <span class="header-sidebar-toggle">
-                        <button title="Sidebar" class="btn btn-flat btn-sidebar-toggle no-text btn-icon" aria-expanded="true" aria-controls="d-sidebar">
-                            <svg class="fa d-icon d-icon-bars svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#bars"></use></svg>
-                        </button>
-                    </span>
-                    <div class="home-logo-wrapper-outlet">
-                        <div class="title">
-                            <a href="/">
-                                <picture>
-                                    <source srcset="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" media="(prefers-color-scheme: dark)">
-                                    <img id="site-logo" class="logo-big" src="https://aurovillenetwork.org/uploads/default/original/1X/0d62d421d6367de3b68b8ba705742cb21d604daa.png" alt="Auroville Community">
-                                </picture>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="floating-search-input-wrapper">
-                    <div class="floating-search-input">
-                        <div class="search-banner">
-                            <div class="search-banner-inner wrap">
-                                <div class="search-menu">
-                                    <a href="/search?expanded=true" class="btn no-text btn-icon btn search-icon" title="Open advanced search">
-                                        <svg class="fa d-icon d-icon-search svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#search"></use></svg>
-                                    </a>
-                                    <div class="search-menu-container menu-panel-results">
-                                        <div class="search-input">
-                                            <input id="search-term" autocomplete="off" placeholder="Search" aria-label="Search" type="search">
-                                            <div class="searching">
-                                                <button class="btn no-text btn-icon show-advanced-search" title="Open advanced search" type="button">
-                                                    <svg class="fa d-icon d-icon-sliders-h svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#sliders-h"></use></svg>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="panel" role="navigation">
-                    <span class="header-buttons"></span>
-                    <ul class="icons d-header-icons">
-                        <li class="header-dropdown-toggle chat-header-icon">
-                            <a href="/chat" class="btn no-text icon btn-flat" tabindex="0" title="Chat">
-                                <svg class="fa d-icon d-icon-d-chat svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#comment"></use></svg>
-                            </a>
-                        </li>
-                        <li>
-                            <button class="btn no-text btn-icon ai-bot-button icon btn-flat" title="Start a PM with an AI bot" type="button">
-                                <svg class="fa d-icon d-icon-robot svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#robot"></use></svg>
-                            </button>
-                        </li>
-                        <li class="search-dropdown header-dropdown-toggle">
-                            <button class="btn no-text btn-icon icon btn-flat" id="search-button" title="Search" aria-label="Search" aria-haspopup="true" type="button">
-                                <svg class="fa d-icon d-icon-search svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#search"></use></svg>
-                            </button>
-                        </li>
-                        <li id="current-user" class="header-dropdown-toggle current-user user-menu-panel">
-                            <button id="toggle-current-user" class="icon btn-flat" aria-haspopup="true" aria-label="Admin's account">
-                                <img loading="lazy" alt="" width="48" height="48" src="/user_avatar/aurovillenetwork.org/admin/96/112_2.png" class="avatar" title="profile, messages, bookmarks and preferences">
-                            </button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-    </div>
