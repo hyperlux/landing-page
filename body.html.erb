@@ -1,44 +1,25 @@
 <div class="drop-down-mode d-header-wrap">
-      
-    <header class="d-header">
-      <div class="wrap">
-        
-    <div class="contents">
-      <!---->
-          
-    <span class="header-sidebar-toggle">
-      <button title="Sidebar" class="btn btn-flat btn-sidebar-toggle no-text btn-icon narrow-desktop" aria-expanded="false" aria-controls="d-sidebar">
-        <svg class="fa d-icon d-icon-bars svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#bars"></use></svg>
-      </button>
-    </span>
-  
+  <header class="d-header">
+    <div class="wrap">
+      <div class="contents">
+        <span class="header-sidebar-toggle">
+          <button title="Sidebar" class="btn btn-flat btn-sidebar-toggle no-text btn-icon narrow-desktop" aria-expanded="false" aria-controls="d-sidebar">
+            <svg class="fa d-icon d-icon-bars svg-icon svg-string" xmlns="http://www.w3.org/2000/svg"><use href="#bars"></use></svg>
+          </button>
+        </span>
 
-      <div class="home-logo-wrapper-outlet">
+        <div class="home-logo-wrapper-outlet">
+          <div class="title">
+            <a href="/">
+              <picture>
+                <source srcset="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" media="(prefers-color-scheme: dark)">
+                <img id="site-logo" class="logo-big" src="https://aurovillenetwork.org/uploads/default/original/1X/0d62d421d6367de3b68b8ba705742cb21d604daa.png" alt="Auroville Community">
+              </picture>
+            </a>
+          </div>
+        </div>
+
         <!---->
-      
-          
-    
-      <div class="title">
-        <a href="/">
-          
-            
-    
-    <picture>
-      <source srcset="https://aurovillenetwork.org/uploads/default/original/1X/99e32f00cb6f0520758dd2efd953b3628be0efe3.png" media="(prefers-color-scheme: dark)">
-      <img id="site-logo" class="logo-big" src="https://aurovillenetwork.org/uploads/default/original/1X/0d62d421d6367de3b68b8ba705742cb21d604daa.png" alt="Auroville Community">
-    </picture>
-
-
-          
-        </a>
-      </div>
-    
-  
-        
-  <!---->
-      </div>
-
-<!---->
       <div class="before-header-panel-outlet">
         <!---->  
   <div class="floating-search-input-wrapper">
@@ -83,6 +64,8 @@
   </div>
 <!---->
       </div>
+      </div>
+      
       <div class="panel" role="navigation">
           <span class="header-buttons">
 <!---->          </span>
@@ -146,14 +129,14 @@
 
 <!---->
 <!---->        </div>
-      <div class="after-header-panel-outlet">
-        <!---->
-      </div>
-      <!---->
     </div>
-  
-      </div>
-      <!---->
-    </header>
-  
-    </div>
+  </header>
+</div>
+
+<!-- Added welcome message -->
+<div class="container">
+  <h1>Welcome to Auroville Community</h1>
+  <p>We're glad you're here. Explore our community and connect with others!</p>
+</div>
+
+<%= yield %>
