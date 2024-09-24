@@ -1,32 +1,204 @@
-<div class="container">
-  <h1>Welcome to Our Website</h1>
-  
-  <p>We're glad you're here! Explore our site to discover amazing content and services.</p>
-  
-  <% if user_signed_in? %>
-    <h2>Hello, <%= current_user.name %>!</h2>
-    <p>It's great to see you again. Check out our latest updates below:</p>
-    <ul>
-      <% @latest_updates.each do |update| %>
-        <li><%= update.title %> - <%= update.date %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <h2>New Here?</h2>
-    <p>Sign up now to access exclusive content and features!</p>
-    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-    <%= link_to "Log In", new_user_session_path, class: "btn btn-secondary" %>
-  <% end %>
-  
-  <div class="featured-content">
-    <h3>Featured Content</h3>
-    <% @featured_items.each do |item| %>
-      <div class="featured-item">
-        <h4><%= item.title %></h4>
-        <p><%= truncate(item.description, length: 100) %></p>
-        <%= link_to "Read More", item_path(item), class: "btn btn-info" %>
-      </div>
-    <% end %>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auroville Network Dashboard</title>
+    <style>
+        :root {
+            --bg-color: #f1ece6;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --card-border: #e0e0e0;
+            --primary-color: #e17055;
+            --secondary-color: #b7410e;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            font-size: 14px;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto;
+        }
+
+        .sidebar .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .sidebar .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .sidebar nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar nav li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar nav a {
+            color: var(--sidebar-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 5px 0;
+        }
+
+        .sidebar nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .sidebar nav i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .topic-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .topic-item .content {
+            flex-grow: 1;
+        }
+
+        .topic-item h3 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .topic-item p {
+            margin: 5px 0 0;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .topic-item a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .topic-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* ... (add any additional styles as needed) ... */
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="path_to_logo.png" alt="Auroville Community Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
+                <li><a href="#"><i class="icon-home"></i> Homepage</a></li>
+                <li><a href="#"><i class="icon-announcement"></i> Announcements</a></li>
+                <li><a href="#"><i class="icon-event"></i> Events</a></li>
+                <li><a href="#"><i class="icon-forum"></i> Forums</a></li>
+                <li><a href="#"><i class="icon-social"></i> Social</a></li>
+                <li><a href="#"><i class="icon-directory"></i> Directory</a></li>
+                <li><a href="#"><i class="icon-references"></i> References</a></li>
+                <li><a href="#"><i class="icon-help"></i> Help Center</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <div class="search-bar">
+                <input type="text" placeholder="Search everything...">
+            </div>
+            <div class="user-menu">
+                <img src="path_to_user_avatar.jpg" alt="User Avatar">
+                <span>Anonymous Admin</span>
+            </div>
+        </div>
+        <div class="dashboard-grid">
+            <div class="welcome-banner">
+                <p>Welcome on the new Auroville Community platform! We hope this can become a space for true connection, in a spirit of respect and mutuality.</p>
+                <a href="/learn-more" class="btn-learn-more">Learn more</a>
+            </div>
+            <section class="latest-announcements section-box">
+                <h2>Latest Announcements</h2>
+                <div id="announcements-content">
+                    <% topic_list(list_opts: { category: 5, per_page: 5 }, opts: { instance_var: "auroville_topics" }) %>
+
+                    <% if @auroville_topics.present? %>
+                        <% @auroville_topics.each do |topic| %>
+                            <div class="topic-item">
+                                <img src="<%= topic.user.avatar_template.gsub('{size}', '40') %>" alt="User Avatar">
+                                <div class="content">
+                                    <h3><a href="<%= topic.url %>" target="_blank"><%= emoji_codes_to_img(topic.fancy_title) %></a></h3>
+                                    <p><%= short_date(topic.created_at) %> • <%= topic.reply_count %> replies</p>
+                                </div>
+                            </div>
+                        <% end %>
+                    <% else %>
+                        <p>No recent announcements found.</p>
+                    <% end %>
+                </div>
+            </section>
+            <section class="quote section-box">
+                <h2>"All's miracle and can by miracle change."</h2>
+                <p>BOOK I, CANTO II</p>
+            </section>
+            <section class="featured-video section-box">
+                <h2>Featured Video</h2>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/Kqz56TrKDRk" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                </div>
+            </section>
+            <section class="whos-online section-box">
+                <h2>Who's Online</h2>
+                <!-- Add online users here -->
+            </section>
+            <section class="recent-topics section-box">
+                <h2>Recent Topics</h2>
+                <!-- Add recent topics here -->
+            </section>
+            <section class="forum-statistics section-box">
+                <h2>Forum Statistics</h2>
+                <!-- Add forum statistics here -->
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Add any JavaScript functionality here
+    </script>
+</body>
+</html>
